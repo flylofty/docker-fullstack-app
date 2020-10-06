@@ -6,17 +6,17 @@ services:
   - docker
 
 before_install:
-  - docker build -t flylofty/react-test-app -f ./frontend/Dockerfile.dev ./frontend
+  - docker build -t lyn0227/react-test-app -f ./frontend/Dockerfile.dev ./frontend
 
 script:
-  - docker run -e CI=true flylofty/react-test-app npm test
+  - docker run -e CI=true lyn0227/react-test-app npm test
 
 after_success:
-  - docker build -t flylofty/docker-frontend ./frontend
-  - docker build -t flylofty/docker-backend ./backend
-  - docker build -t flylofty/docker-nginx ./nginx
+  - docker build -t lyn0227/docker-frontend ./frontend
+  - docker build -t lyn0227/docker-backend ./backend
+  - docker build -t lyn0227/docker-nginx ./nginx
 
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
-  - docker push flylofty/docker-frontend
-  - docker push flylofty/docker-backend
-  - docker push flylofty/docker-nginx
+  - docker push lyn0227/docker-frontend
+  - docker push lyn0227/docker-backend
+  - docker push lyn0227/docker-nginx
