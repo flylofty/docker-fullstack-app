@@ -17,7 +17,6 @@ after_success:
   - docker build -t flylofty/docker-nginx ./nginx
 
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
-
   - docker push flylofty/docker-frontend
   - docker push flylofty/docker-backend
   - docker push flylofty/docker-nginx
